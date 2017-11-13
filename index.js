@@ -3,7 +3,7 @@ var app = express();
 var body_parser = require('body-parser');
 
 var pgp = require('pg-promise')({});
-var db = pgp({database: 'todo'});
+var db = pgp(process.env.DATABASE_URL || {database: 'todo'});
 
 app.set('view engine', 'hbs');
 app.use('/static', express.static('public'));
@@ -55,6 +55,8 @@ app.post('/update/:id', function (request, response, next) {
     .catch(next);
 });
 
-app.listen(8000, function () {
-  console.log('Listening on port 8000');
+
+var PORT = process.env.PORT || 8000;
+app.listen(PORT, function () {
+  console.log('Listening on port ' + PORT);
 });
