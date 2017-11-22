@@ -1,7 +1,7 @@
 # To-Do-App
 
 <strong>Description</strong><br>
-A simple app to add things-to do.
+A simple task manager/reminder to keep track of things-to-do.
 
 <br>
 
