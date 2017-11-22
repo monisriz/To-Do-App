@@ -1,5 +1,6 @@
 # To-Do-App
-https://todoapp.monisrizvi.com/
+<strong>https://todoapp.monisrizvi.com/</strong>
+<br><br>
 <strong>Description</strong><br>
 A simple task manager/reminder to keep track of things-to-do.
 
