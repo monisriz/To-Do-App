@@ -13,4 +13,5 @@ A simple task manager/reminder to keep track of things-to-do.
 <li>JavaScript</li>
 <li>HTML5</li>
 <li>CSS3</li>
+<li>Bootstrap 4</li>
 </ul>
