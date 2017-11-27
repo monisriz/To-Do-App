@@ -10,32 +10,66 @@
         <div class="form-group">
           <input type="text" class="form-control form-control-lg todoinput text-center" name="new_todo" placeholder="What do you want to do?" maxlength="50" required>
         </div>
-        <div class="form-inline text-center">
-          <input class="form-control form-control-sm tododate col-5 text-center mb-2 mr-sm-2 mb-sm-0" placeholder="Target date" id="datepicker" name="end_date" data-toggle="datepicker">
-          <div class="priority">
-            <select class="form-control todopriority mb-2 mr-sm-2 mb-sm-0" name="priority" id="sel1" style="color:grey">
+        <div class="form-group form-inline text-center">
+          <input class="form-control form-control-sm tododate col-5 mr-4" placeholder="Target date" id="datepicker" name="end_date" data-toggle="datepicker">
+            <select class="form-control form-control-sm todopriority col-6 " name="priority" id="sel1" style="color:grey">
               <option hidden>Priority</option>
               <option value=High>High</option>
               <option value=Medium>Medium</option>
               <option value=Low>Low</option>
             </select>
-          </div>
         </div>
-        <button class="btn btn-primary todosubmit mt-3" type="submit" name="submit">Save</button>
+        <button class="btn btn-primary todosubmit mt-1" type="submit" name="submit">Save</button>
       </form>
     </div>
   </div>
 
 <!-- Todo db query results   -->
+{{#each todolist}}
+<div class="row itemdiv div{{@index}}">
+
+  <div class="col-xs-4 status">
+    <form action="/update/{{id}}" method="POST">
+      {{#if status}}
+        Status: <strong>Completed</strong>
+      {{else}}
+        Status: <strong>Incomplete</strong>
+      {{/if}}
+    </form>
+  </div>
+
+  <div class="col-xs-4 enddate">
+      {{#if enddate}}
+        Deadline: <strong>{{enddate}}</strong>
+      {{else}}
+        Deadline: <strong>N/A</strong>
+      {{/if}}
+    </form>
+  </div>
+
+  <div class="col-xs-4 priority">
+      {{#if enddate}}
+        Priority: <strong>{{priority}}</strong>
+      {{else}}
+        Priority: <strong>N/A</strong>
+      {{/if}}
+    </form>
+  </div>
+
+
+</div>
+{{/each}}
   <div class="result-container mx-auto mt-5 text-center">
+    <hr style="width:70%">
 
     {{#each todolist}}
       <div class="row todoitem">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 description" style="text-align:right">
-          <h4>{{description}}</h4>
+
+        <div class="col-6 description">
+          <a href="javascript: void(0)" onclick="show({{@index}})"><h4>{{description}}</h4></a>
         </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 status">
+        <div class="col-xs-2 status">
           <form action="/update/{{id}}" method="POST">
             {{#if status}}
               <input type="image" src="../static/true.png" border="0" alt="Completed" class="statusicon true"/>
@@ -44,8 +78,11 @@
             {{/if}}
           </form>
         </div>
-
       </div>
+
+        <hr style="width:70%">
+
+
       {{else}}
       <h2>Add a To-Do item</h2>
     {{/each}}

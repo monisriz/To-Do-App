@@ -23,6 +23,23 @@ app.get('/todos', function (request, response, next) {
     .catch(next);
 });
 
+// app.post('/item/:id', function (request, response, next) {
+//   var id = request.params.id;
+//   let query = "SELECT * FROM task WHERE id = $1";
+//   db.one(query, id)
+//     .then(function(item) {
+//       var status = item.status;
+//       var description = item.description;
+//       var priority = item.priority;
+//       var enddate = item.enddate;
+//       return db.any(query, item.id);
+//     })
+//     .then(function(){
+//       response.redirect('/todos');
+//     })
+//     .catch(next);
+// });
+
 app.post('/add', function (request, response, next) {
   var description = request.body.new_todo;
   var enddate = request.body.end_date;
